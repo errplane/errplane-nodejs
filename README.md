@@ -18,8 +18,25 @@ var errplane = require('errplane').configure({
   applicationId: "a1b2c3d4"
 });
 ```
+## Usage with Express
 
-## Reporting Exceptions
+This library has built-in support for Express. Currently, it supplies middleware that can report exceptions and basic performance data.
+
+### Reporting Exceptions
+
+Before you call app.listen(...), insert the Errplane exception middleware as follows:
+
+``` javascript
+app.use(errplane.expressExceptionHandler());
+```
+
+### Reporting Request Response Time
+
+``` javascript
+app.use(errplane.expressResponseTimeReporter());
+```
+
+## Reporting Generic Exceptions
 
 First, you can tell Errplane to start reporting uncaught exceptions:
 
