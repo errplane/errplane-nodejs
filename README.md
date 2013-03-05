@@ -45,8 +45,27 @@ errplane.heartbeat("background_worker", 5000);
 
 ### Timing Synchronous Functions
 
+``` javascript
+syncThing = function() {
+  // perform complex calculation here
+}
+
+timedSyncThing = errplane.timeSync("sync_thing_runtime", syncThing)
+value = timedSyncThing();
+```
+
 ### Timing Asynchronous Functions
 
 ``` javascript
+asyncThing = function(value, callback) {
+  setTimeout(function () {
+    callback(value);
+  }, 100)
+}
 
+timedAsyncThing = errplane.timeAsync("async_thing_runtime", asyncThing);
+
+timedAsyncThing(99, function(value) {
+  console.log(value)
+})
 ```
