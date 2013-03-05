@@ -1,6 +1,6 @@
 # Errplane
 
-A Node.js library for reporting exceptions, metrics, and performance data to [https://errplane.com](Errplane).
+A Node.js library for reporting exceptions, metrics, and performance data to [Errplane](https://errplane.com).
 
 ## Installation
 
