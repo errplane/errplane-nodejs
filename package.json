@@ -20,13 +20,9 @@
   "license": "BSD",
   "dependencies": {
     "request": "2.14.0",
-    "stack-trace": "0.0.6"
+    "stack-trace": "0.0.6",
+    "sha1": "1.0.1"
   },
   "devDependencies": {
-  },
-  "scripts": {
-    "prepublish":   "./scripts/clean && ./scripts/build",
-    "postpublish":  "./scripts/publish",
-    "test":         "./node_modules/.bin/mocha"
   }
 }
