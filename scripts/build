@@ -1,0 +1,2 @@
+#!/bin/sh
+coffee -b -c -l -o lib/errplane lib/errplane/*.coffee

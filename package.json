@@ -16,10 +16,17 @@
     "metrics",
     "instrumentation"
   ],
-  "author": "Todd Persen (todd@errplane.com)",
+  "author": "Errplane (pilots@errplane.com)",
   "license": "BSD",
   "dependencies": {
     "request": "2.14.0",
     "stack-trace": "0.0.6"
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "prepublish":   "./scripts/clean && ./scripts/build",
+    "postpublish":  "./scripts/publish",
+    "test":         "./node_modules/.bin/mocha"
   }
 }
