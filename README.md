@@ -36,7 +36,20 @@ app.use(errplane.expressExceptionHandler());
 app.use(errplane.expressResponseTimeReporter());
 ```
 
-## Reporting Generic Exceptions
+## Reporting A Single Exception
+
+``` javascript
+try {
+  // do something risky
+}
+catch(exception) {
+  errplane.reportException(exception);
+
+  // do some other stuff to handle the exception
+}
+```
+
+## Reporting All Generic Exceptions
 
 First, you can tell Errplane to start reporting uncaught exceptions:
 
@@ -44,7 +57,12 @@ First, you can tell Errplane to start reporting uncaught exceptions:
 errplane.reportUncaughtExceptions();
 ```
 
-Note that the library will reraise these exceptions after they're reported, so your application will still crash afterwards.
+Note that the library will not reraise these exceptions by default after they're reported. If you'd like your application to die
+afterwards (the normal behavior for uncaught exceptions), you can do the following:
+
+``` javascript
+errplane.reportUncaughtExceptions(true);
+```
 
 ## Metrics and Instrumentation
 
