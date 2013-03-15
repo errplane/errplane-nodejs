@@ -64,6 +64,17 @@ afterwards (the normal behavior for uncaught exceptions), you can do the followi
 errplane.reportUncaughtExceptions(true);
 ```
 
+## Reporting All Generic Exceptions with Cluster
+
+Ensure that the following line gets run both in the cluster master and workers:
+
+``` javascript
+errplane.reportClusterUncaughtExceptions();
+```
+
+This will catch an exception in the cluster worker, which will pass it back to the master to post to errplane.  If you aren't catching uncaughtException yourself, afterwards the worker will die. (and get restarted by cluster)
+
+
 ## Metrics and Instrumentation
 
 ### Reporting Values
