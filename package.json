@@ -1,6 +1,6 @@
 {
   "name": "errplane",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Client library for Errplane (https://errplane.com)",
   "main": "index.js",
   "scripts": {
