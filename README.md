@@ -1,106 +1,22 @@
-# Errplane
+Errplane
+========
+This library integrates your applications with [Errplane](https://errplane.com), a service for real-time monitoring and alerting of applications and infrastructure.
 
-A Node.js library for reporting exceptions, metrics, and performance data to [Errplane](https://errplane.com).
+This library currently has support for Node.js and Express (2.x, 3.x).
 
-## Installation
+Ready to get started? [Check out the docs!](https://errplane.com/documentation/node)
 
-``` bash
-npm install errplane
-```
+Support
+-------
 
-## Configuration
+Running into any issues? Get in touch with us at [support@errplane.com](mailto:support@errplane.com).
 
-Load and configure the Errplane object:
+Contributing
+------------
 
-``` javascript
-var errplane = require('errplane').configure({
-  apiKey: "1234-5678-abcdefgh-wxyz",
-  applicationId: "a1b2c3d4"
-});
-```
-## Usage with Express
+We love contributions. Want to add support for something you don't already see here? Fork this repository, make your changes, and send us a pull request.
 
-This library has built-in support for Express. Currently, it supplies middleware that can report exceptions and basic performance data.
+Copyright
+---------
 
-### Reporting Exceptions
-
-Before you call app.listen(...), insert the Errplane exception middleware as follows:
-
-``` javascript
-app.use(errplane.expressExceptionHandler());
-```
-
-### Reporting Request Response Time
-
-``` javascript
-app.use(errplane.expressResponseTimeReporter());
-```
-
-## Reporting A Single Exception
-
-``` javascript
-try {
-  // do something risky
-}
-catch(exception) {
-  errplane.reportException(exception);
-
-  // do some other stuff to handle the exception
-}
-```
-
-## Reporting All Generic Exceptions
-
-First, you can tell Errplane to start reporting uncaught exceptions:
-
-``` javascript
-errplane.reportUncaughtExceptions();
-```
-
-Note that the library will not reraise these exceptions by default after they're reported. If you'd like your application to die
-afterwards (the normal behavior for uncaught exceptions), you can do the following:
-
-``` javascript
-errplane.reportUncaughtExceptions(true);
-```
-
-## Metrics and Instrumentation
-
-### Reporting Values
-
-``` javascript
-errplane.report("queue_depth", {value: queue.length});
-```
-
-### Heartbeats
-
-``` javascript
-errplane.heartbeat("background_worker", 5000);
-```
-
-### Timing Synchronous Functions
-
-``` javascript
-syncThing = function() {
-  // perform complex calculation here
-}
-
-timedSyncThing = errplane.timeSync("sync_thing_runtime", syncThing)
-value = timedSyncThing();
-```
-
-### Timing Asynchronous Functions
-
-``` javascript
-asyncThing = function(value, callback) {
-  setTimeout(function () {
-    callback(value);
-  }, 100)
-}
-
-timedAsyncThing = errplane.timeAsync("async_thing_runtime", asyncThing);
-
-timedAsyncThing(99, function(value) {
-  console.log(value)
-})
-```
+Copyright (c) 2013 Errplane, Inc.
